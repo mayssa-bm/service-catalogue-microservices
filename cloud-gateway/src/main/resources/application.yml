@@ -1,0 +1,26 @@
+server:
+  port: 9191
+
+
+
+
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/account/**
+
+        - id: CATALOGUE-SERVICE
+          uri: lb://CATALOGUE-SERVICE
+          predicates:
+            - Path=/api/**
+
+
+
+
